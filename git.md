@@ -121,7 +121,7 @@ git pull [remoteName] [localBranchName]
 ```
 
 
-#### 添加项目,git add格式
+#### 添加文件到暂存区
 ###### 单独文件
 `git add`完整文件名
 
@@ -147,9 +147,14 @@ git branch -d [name]
 git push origin --delete [name]
 ```
 
-#### 查看状态
+#### 查看暂存区和工作目录的状态
 ```bash
 git status
+```
+
+#### 查看本地仓库文件
+```bash
+git ls-files
 ```
 
 #### 合并某分支到当前分支
