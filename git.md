@@ -52,11 +52,11 @@ git push -u origin master
 
 ## 从远程仓库获取最新代码合并到本地分支
 #### 不额外建立本地分支
-* 查询当前远程的版本
+查询当前远程的版本
 ```bash
 $ git remote -v
 ```
-* 获取最新代码到本地(本地当前分支为[branch]，获取的远端的分支为[origin/branch])
+获取最新代码到本地(本地当前分支为[branch]，获取的远端的分支为[origin/branch])
 ```bash
 $ git fetch origin master  [示例1：获取远端的origin/master分支]
 ```
@@ -65,7 +65,7 @@ $ git fetch origin dev [示例2：获取远端的origin/dev分支]
 ```
 
 ##### 查看版本差异
-* 示例1：查看本地master与远端origin/master的版本差异
+示例1：查看本地master与远端origin/master的版本差异
 ```bash
 $ git log -p master..origin/master 
 ```
@@ -75,11 +75,11 @@ $ git log -p dev..origin/dev
 ```
 
 ##### 合并最新代码到本地分支
-* 示例1：合并远端分支origin/master到当前分支
+示例1：合并远端分支origin/master到当前分支
 ```bash
 $ git merge origin/master
 ```
-* 示例2：合并远端分支origin/dev到当前分支
+示例2：合并远端分支origin/dev到当前分支
 ```bash
 $ git merge origin/dev
 ```
