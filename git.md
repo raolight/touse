@@ -56,18 +56,21 @@ git push -u origin master
 ```bash
 git remote -v
 ```
-获取最新代码到本地(本地当前分支为[branch]，获取的远端的分支为[origin/branch])
+
+##### 获取最新代码到本地(本地当前分支为[branch]，获取的远端的分支为[origin/branch])
+示例1：获取远端的origin/master分支
 ```bash
-git fetch origin master  [示例1：获取远端的origin/master分支]
+git fetch origin master
 ```
+示例2：获取远端的origin/dev分支
 ```bash
-git fetch origin dev [示例2：获取远端的origin/dev分支]
+git fetch origin dev
 ```
 
 ##### 查看版本差异
 示例1：查看本地master与远端origin/master的版本差异
 ```bash
-git log -p master..origin/master 
+git log -p master..origin/master
 ```
 示例2：查看本地dev与远端origin/dev的版本差异
 ```bash
