@@ -50,17 +50,37 @@ git push -u origin master
 
 
 
-
-## git放弃本地修改，强制拉取更新
+## 从远程仓库获取最新代码合并到本地分支
+#### 不额外建立本地分支
+//查询当前远程的版本
 ```bash
-git fetch --all
+$ git remote -v
 ```
-`git fetch` 指令是下载远程仓库最新内容，不做合并 
-
+//获取最新代码到本地(本地当前分支为[branch]，获取的远端的分支为[origin/branch])
 ```bash
-git reset --hard origin/master
+$ git fetch origin master  [示例1：获取远端的origin/master分支]
 ```
-`git reset` 指令把HEAD指向master最新版本
+```bash
+$ git fetch origin dev [示例2：获取远端的origin/dev分支]
+```
+
+##### 查看版本差异
+示例1：查看本地master与远端origin/master的版本差异
+```bash
+$ git log -p master..origin/master 
+```
+示例2：查看本地dev与远端origin/dev的版本差异
+```bash
+$ git log -p dev..origin/dev
+```
+
+//合并最新代码到本地分支
+```bash
+$ git merge origin/master  [示例1：合并远端分支origin/master到当前分支]
+```
+```bash
+$ git merge origin/dev [示例2：合并远端分支origin/dev到当前分支]
+```
 
 
 ## Git提交记住用户名和密码
