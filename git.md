@@ -35,6 +35,14 @@ git config --global user.email "youremail@xxx.com"
 之后修改完文件之后可以先`git status`查看一下修改的文件，红色字modified为未添加到暂存区的
 
 
+## 远程最新版本强制覆盖本地文件
+```bash
+git fetch --all  
+git reset --hard origin/master 
+git pull
+```
+
+
 ## 正常修改流程
 先pull仓库最新文件到本地（但不会覆盖本地已有文件），再修改文件，修改完之后`git add`当前文件添加到暂存区
 之后`git add .`将所有修改文件添加到暂存区，再使用`git commit -a -m "第二次修改"`添加注释信息并提交到本地仓库
