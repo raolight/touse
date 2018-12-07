@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>css背景遮罩</title>
+
+    <style>
+        #bigImg{
+            width:1000px;
+            height:400px;
+            background-image:url(1.jpg);
+            overflow:hidden;
+            background-size:cover;
+        }
+        #bigImg img{
+            -webkit-mask-image: url(Xmark.png);
+            -webkit-mask-repeat:no-repeat;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="bigImg">
+        <img src="2.jpg" width="1000px" height="400px"/>
+    </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$('#bigImg').mousemove(function(e){
+    $(this).find('img').css('-webkit-mask-position-x',e.clientX-200);
+})
+</script>
