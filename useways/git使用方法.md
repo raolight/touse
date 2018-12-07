@@ -1,4 +1,4 @@
-# git常规操作
+# git使用方法
 
 ## 首先初始化，打开git bash，设置你的name和email：  
 ```bash
