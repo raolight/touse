@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	
+    <title>url判断</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+var oUrl = window.location.href.split("/")[window.location.href.split("/").length -1]; 
+var arrUrl = ["name","name","name","name","name"];
+var iNow = 0;
+
+for( var i=0; i < arrUrl.length; i++ ){
+	if( arrUrl[i] == oUrl ){
+		iNow = i+1;
+		console.log(iNow);
+		$("class").eq(iNow).addClass("active").siblings().removeClass("active");
+	}
+}
+</script>
