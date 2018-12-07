@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>高德地图判断是否在某个区域内</title>
+
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css" />
+    <script src="https://webapi.amap.com/maps?v=1.4.7&key=313abe1aa0aa0cfcc49171a589d8c011&plugin=AMap.Walking"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        center: [116.397428, 39.90923],
+        zoom: 13
+    });
+
+
+    var circle = new AMap.Circle({
+        center: new AMap.LngLat("116.403322", "39.920255"),// 圆心位置
+        radius: 1000, //半径
+        strokeColor: "#FF33FF", //线颜色
+        strokeOpacity: 0.2, //线透明度
+        strokeWeight: 3,    //线宽
+        fillColor: "#1791fc", //填充色
+        fillOpacity: 0.05//填充透明度
+    });
+
+    //声明一个list
+    var list = {
+        "size": 4,
+        "data": [
+            { "x": 116.397428, "y": 39.921883 },
+            { "x": 116.397428, "y": 39.920213 },
+            { "x": 116.403322, "y": 39.922282 },
+            { "x": 116.403322, "y": 39.920249 }
+        ]
+    }
+
+    for (var j = 0, map; j < list.size; j++) {
+        var myObj = list.data[j];
+        var myLngLat = new AMap.LngLat(myObj.x, myObj.y);
+        console.log(circle.contains(myLngLat));
+        
+        if (circle.contains(myLngLat)) {//如果点在圆内则输出
+            var marker = new AMap.Marker({
+                position: myLngLat,
+                map: map
+            });
+            
+            console.log('在区域内')
+        }
+
+    }
+
+    circle.setMap(map);//显示圆圈
+    map.setFitView();//根据地图上添加的覆盖物分布情况，自动缩放地图到合适的视野级别
+</script>
