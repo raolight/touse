@@ -128,11 +128,15 @@ git config credential.helper 'cache –timeout=3600'
 git log
 ```
 
+#### 创建分支
+```bash
+git branch [name]
+```
+
 #### 切换分支
 ```bash
 git checkout [name]
 ```
-参数 -b 远程拉并直接创建切换了
 
 #### 查看分支
 本地：
