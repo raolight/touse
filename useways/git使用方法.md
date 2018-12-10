@@ -325,5 +325,5 @@ git reset --hard HEAD
 
 ###### 代码已经提交，撤销的方法是
 ```bash
-```
 git reset --hard ORIG_HEAD
+```
