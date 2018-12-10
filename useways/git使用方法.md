@@ -143,6 +143,12 @@ git checkout [name]
 git push origin [name]
 ```
 
+#### 将本地分支与远程分支关联之后才能直接执行git push推送
+```bash
+git push origin [name] -u
+```
+此代码是将当前branch push到origin的branch `-u`表示同时建立关联，以后再推送到远程只需`git push`
+
 #### 查看分支
 本地：
 ```bash
