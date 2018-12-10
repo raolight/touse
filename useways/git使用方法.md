@@ -193,7 +193,7 @@ git branch -d [name]
 
 #### 删除远程分支
 ```bash
-git push origin --delete [name]
+git push origin -d [name]
 ```
 
 #### 查看暂存区和工作目录的状态
