@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>焦点图模板</title>
+
+    <link rel="stylesheet" href="swiper-2.7.6.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="swiper-2.7.6.min.js"></script>
+
+    <style>
+        /*base*/
+        body,html,div,p,table,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6{margin:0px;padding:0px;}
+        ul,ol,li,dl,dt,dd{list-style:none;}
+        img,a{border:none;}
+        em,i{font-style:normal;}
+        a{outline:none;text-decoration:none;}
+     
+        /* 小图 */
+        .facilities_Btn_wrap{width:962px;padding-top:30px;margin:0 auto;position:relative;z-index:3;height:100px;}
+        .facilities_picfocus_wrap{width:852px;height:100px;float:left;overflow:hidden;position:relative;margin-left:5px;margin-right:5px;position:relative;z-index:3;}
+        .facilities_picfocus{width:99999px;position:relative;left:0px;transition:0.8s;}
+        .facilities_picfocus a{float:left;width:163px;height:92px;position:relative;margin-right:9px;overflow:hidden;}
+        .facilities_picfocus a p{position:absolute;left:0px;bottom:0px;width:100%;height:30px;text-align:center;line-height:30px;background:rgba(0,0,0,0.5);color:#fff;font-size:12px;font-family:"宋体";cursor:pointer;transition:0.3s;}
+        .facilities_picfocus a p.active{height:100%;line-height:84px;background:rgba(0,0,0,0.5);}
+        .facilities_picfocus a img{width:100%;height:92px;transition:0.3s;}
+        .facilities_picfocus a:hover,.facilities_picfocus a.active{width:155px;height:84px;border:4px solid #ff6c00;}
+
+        .facilities_prev{width:50px;height:92px;line-height:92px;float:left;text-align:center;font-size:32px;font-weight:bold;background:#ffa800;color:#fff;text-decoration:none;}
+        .facilities_next{width:50px;height:92px;line-height:92px;float:left;text-align:center;font-size:32px;font-weight:bold;background:#ffa800;color:#fff;text-decoration:none;}
+
+
+        /* 内容 */
+        .facilities_box_wrap{height:540px;position:relative;}
+        .facilities_box{display:none;}
+
+        .picshow_content_pop_block{width:960px;height:540px;text-align:center;position:relative;z-index:0;margin:0 auto;}
+        .holiday_content_block_box{width:960px;height:540px;position:relative;overflow:hidden;text-align:center;left:350px;top:220px;border:2px solid #fff;}
+        .holiday_content_block_box .picshow_picfocus{bottom:60px;}
+
+        .picshow_content_pop_block_box{width:960px;height:540px;position:relative;overflow:hidden;}
+        .picshow_content_pop_block_box .picshow_picbox{width:960px;height:540px;background:#111;margin:0 auto;}
+        .picshow_content_pop_block_box .picshow_picbox img{width:960px;height:540px;}
+        .picshow_picfocus{display:inline-block;text-align:center;bottom:50px;z-index:2;position:relative;padding:7px 10px 5px 10px;border-radius:30px;}
+        .picshow_picfocus .swiper-pagination-switch{display:inline-block;width:15px;height:15px;background:#fff;margin:0 6px;cursor:pointer;position:relative;opacity:0.5;filter:alpha(opacity=50);border-radius:100%;transition:0.3s;border:1px solid #111;}
+        .picshow_picfocus .swiper-active-switch{opacity:1;filter:alpha(opacity=100);background:#ff8a00;}
+
+        .picshow_content_pop_block_intro{width:100%;text-align:left;position:absolute;height:144px;bottom:0px;}
+        .picshow_intro_text{width:960px;height:144px;font-size:16px;color:#fff;background:rgba(0,0,0,0.5);}
+        .picshow_intro_text h4{font-size:30px;color:#ffde00;font-weight:500;padding-top:12px;margin-left:30px;}
+        .picshow_intro_text p{line-height:24px;margin-left:30px;margin-top:5px;width:820px;}
+    </style>
+</head>
+<body>
+
+    <!-- 内容 -->
+    <div class="facilities_box_wrap">
+        <!-- facilities_box -->
+        <div class="facilities_box" style="display:block;">
+            <div class="facilities_con_box">
+                <div class="picshow_content_pop_block">
+                    <div class="picshow_content_pop_block_box">
+                        <div class="picshow_picbox">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/2.jpg"></div>
+                            </div>
+                        </div>
+                        <div class="picshow_picfocus"></div>
+                    </div>
+                    <div class="picshow_content_pop_block_intro">
+                        <div class="picshow_intro_text">
+                            <h4>标题1</h4>
+                            <p>内容111111111</p>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- facilities_box -->
+        <div class="facilities_box">
+            <div class="facilities_con_box">
+                <div class="picshow_content_pop_block">
+                    <div class="picshow_content_pop_block_box">
+                        <div class="picshow_picbox">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/2.jpg"></div>
+                            </div>
+                        </div>
+                        <div class="picshow_picfocus"></div>
+                    </div>
+                    <div class="picshow_content_pop_block_intro">
+                        <div class="picshow_intro_text">
+                            <h4>标题2</h4>
+                            <p>内容222222222</p>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- facilities_box -->
+        <div class="facilities_box">
+            <div class="facilities_con_box">
+                <div class="picshow_content_pop_block">
+                    <div class="picshow_content_pop_block_box">
+                        <div class="picshow_picbox">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/2.jpg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg"></div>
+                            </div>
+                        </div>
+                        <div class="picshow_picfocus"></div>
+                    </div>
+                    <div class="picshow_content_pop_block_intro">
+                        <div class="picshow_intro_text">
+                            <h4>标题3</h4>
+                            <p>内容33333333</p>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <!-- 小图 -->
+    <div class="facilities_Btn_wrap">
+        <a href="javascript:;" class="facilities_prev"><</a>
+
+        <div class="facilities_picfocus_wrap">
+            <div class="facilities_picfocus">
+                <a href="javascript:;" class="active"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg" alt=""><p class="active">111111</p></a>
+                <a href="javascript:;"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg" alt=""><p>222222</p></a>
+                <a href="javascript:;"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/2.jpg" alt=""><p>3333333</p></a>
+                <a href="javascript:;"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg" alt=""><p>4444444</p></a>
+                <a href="javascript:;"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/2.jpg" alt=""><p>555555</p></a>
+                <a href="javascript:;"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg" alt=""><p>666666</p></a>
+                <a href="javascript:;"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/2.jpg" alt=""><p>77777777</p></a>
+                <a href="javascript:;"><img src="https://raw.githubusercontent.com/raolight/touse/master/demo/css%E8%83%8C%E6%99%AF%E9%81%AE%E7%BD%A9/1.jpg" alt=""><p>8888888</p></a>
+            </div>
+        </div>
+
+        <a href="javascript:;" class="facilities_next">></a>
+
+        <div class="clear"></div>
+    </div>
+
+
+</body>
+</html>
+
+
+
+<script>
+for (var i = 0; i < $(".facilities_box_wrap").length; i++) {
+    fnPicShowFacilities(i);
+}
+for (var i = 0; i < $(".picshow_content_pop_block_box").length; i++) {
+    createSwiper(i)
+}
+function createSwiper(obj) {
+    var picBox = $('.picshow_picbox')[obj];
+    var picFocus = $('.picshow_picfocus')[obj];
+
+    var bannerSwiper = new Swiper(picBox, {
+        pagination: picFocus,
+        speed: 900,
+        loop: false,
+        observer: true,
+        observeParents: true,
+        // autoplay: 3000,
+        // grabCursor: true,
+        paginationClickable: true,
+        autoplayDisableOnInteraction: false,
+        // noSwiping : true, //为true时并是一张图可手动为swiper-slide加上swiper-no-swiping类名
+    })
+}
+function fnPicShowFacilities(obj){
+    var oUrl = window.location.href.split("=")[window.location.href.split("=").length-1].split("#")[window.location.href.split("=").length];
+    var oUrlName = window.location.href.split("/")[window.location.href.split("/").length-1].split("#")[0];
+    var arrUrl = ["web01","web02","web03","web04","web05","web06","web07","web08","web09","web10","web11","web12","web13","web14","web15","web16","web17","web18","web19","web20","web21","web22","web23","web24","web25","web26","web27","web28","web29","web30"];
+
+    var iThis = 0;
+    var picShowFacilitiesCon = $(".facilities_box_wrap").eq(obj).find(".facilities_box");
+    var picLi = $(".facilities_box").eq(obj).find("li");
+    var smallPicList = $(".facilities_picfocus").eq(obj);
+    var picLiWidth = $(".facilities_box li").width();
+    var picShowPrevBtn = $(".facilities_prev").eq(obj);
+    var picShowNextBtn = $(".facilities_next").eq(obj);
+    var smallBtn = $(".facilities_picfocus").eq(obj).find("a");
+    var smallBtnWidth = $(".facilities_picfocus").eq(obj).find("a").width()+17;
+    var smallBtnLength = $(".facilities_picfocus").eq(obj).find("a").length;
+    var timer = null;
+
+    
+    for(var i=0; i<arrUrl.length; i++){
+        if (oUrl == arrUrl[i]){
+            smallBtn.eq(i).addClass("active").siblings().removeClass("active");
+            smallBtn.eq(i).find("p").addClass("active").parent().siblings().find("p").removeClass("active");
+            picShowFacilitiesCon.eq(i).show().siblings().hide();
+
+            if(smallBtn.length>5){
+                if(iThis>2){
+                    smallPicList.css({left:(2-iThis)*smallBtnWidth});
+                }else if(iThis<=2){
+                    smallPicList.css({left:0});
+                }
+                if(iThis>smallBtnLength-3){
+                    smallPicList.css({left:-smallBtnWidth*(smallBtnLength-5)});
+                }
+            }
+            var iThis = i;
+        }
+        // console.log(iThis)
+    }
+
+    picShowPrevBtn.click(function(){
+        if(iThis>0){
+            iThis--;
+            // window.location.href = oUrlName + "#" + arrUrl[iThis];
+        }else{
+            iThis=smallBtnLength-1;
+            // window.location.href = oUrlName + "#" + arrUrl[smallBtnLength-1]
+        }
+        fnPic(iThis)
+        // alert(smallBtnLength-1)
+    });
+
+    picShowNextBtn.click(function(){
+        if(iThis<smallBtnLength-1){
+            iThis++;
+            // window.location.href = oUrlName + "#" + arrUrl[iThis];
+        }else{
+            iThis=0;
+            // window.location.href = oUrlName + "#" + arrUrl[0]
+        }
+        fnPic(iThis)
+    });
+
+    smallBtn.click(function(){
+        iThis = $(this).index();
+        fnPic(iThis);
+        
+        if(smallBtn.length>5){
+            if(iThis>2){
+                smallPicList.css({left:(2-iThis)*smallBtnWidth});
+            }else if(iThis<=2){
+                smallPicList.css({left:0});
+            }
+            if(iThis>smallBtnLength-3){
+                smallPicList.css({left:-smallBtnWidth*(smallBtnLength-5)});
+            }
+        }
+    });
+
+    function fnPic(){
+        smallBtn.eq(iThis).addClass("active").siblings().removeClass("active");
+        smallBtn.eq(iThis).find("p").addClass("active").parent().siblings().find("p").removeClass("active");
+        picShowFacilitiesCon.eq(iThis).show().siblings().hide();
+
+        if(smallBtn.length>5){
+            if(iThis>2){
+                smallPicList.css({left:(2-iThis)*smallBtnWidth});
+            }else if(iThis<=2){
+                smallPicList.css({left:0});
+            }
+            if(iThis>smallBtnLength-3){
+                smallPicList.css({left:-smallBtnWidth*(smallBtnLength-5)});
+            }
+        }
+    }
+
+}
+</script>
