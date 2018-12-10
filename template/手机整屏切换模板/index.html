@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>手机整屏滑动模板</title>
+
+    <link rel="stylesheet" href="swiper.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="swiper.min.js"></script>
+
+    <script>
+        // 根节点缩放
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+
+            if (!doc.addEventListener) return;
+
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+
+    <style>
+    /*base*/
+    body,html,div,p,table,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6{margin:0px;padding:0px;}
+    ul,ol,li,dl,dt,dd{list-style:none;}
+    img,a{border:none;}
+    em,i{font-style:normal;}
+    a{outline:none;text-decoration:none;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+    a:active{opacity:0.85;}
+    html,body{font-size:62.5%;font-family:"微软雅黑","Arial","Helvetica";font-weight:normal;text-shadow:none;background:#2e3132;width:100%;position:relative;margin:0px;padding:0px;height:100%;}
+    .clear{width:0px;height:0px;font-size:0px;line-height:0px;clear:both;overflow:hidden;}
+
+
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+            <div class="swiper-slide">Slide 10</div>
+        </div>
+        
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</body>
+</html>
+
+
+<script>
+var swiper = new Swiper('.swiper-container', {
+    effect : 'coverflow',
+    direction: 'vertical',
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    speed: 800,
+    // autoplay : {
+    //     delay:2000
+    // },
+});
+</script>
