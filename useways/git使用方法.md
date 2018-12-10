@@ -138,6 +138,11 @@ git branch [name]
 git checkout [name]
 ```
 
+#### 推送创建的分支
+```bash
+git push origin [name]
+```
+
 #### 查看分支
 本地：
 ```bash
