@@ -49,17 +49,17 @@ git pull：相当于是从远程获取最新版本并merge到本地.
 
 ## git命令常用操作
 #### 查看历史记录
-```bash
+```
 git log
 ```
 
 #### 查看分支
 查看本地分支：
-```bash
+```
 git branch
 ``` 
 查看远程分支：
-```bash
+```
 git branch -r
 ```
 
@@ -79,9 +79,9 @@ git push origin [name]
 ```
 
 #### 将本地分支与远程分支关联之后才能直接执行git push推送
-```js
+```bash
 git push origin [name] -u
-//此代码是将当前branch push到origin的branch,-u表示同时建立关联，以后再推送到远程只需git push
+#此代码是将当前branch push到origin的branch,-u表示同时建立关联，以后再推送到远程只需git push
 ```
 
 
