@@ -35,20 +35,18 @@ git config --global user.email "youremail@xxx.com"
 之后修改完文件之后可以先`git status`查看一下修改的文件，红色字modified为未添加到暂存区的
 
 
-## 远程最新版本强制覆盖本地文件
+## `git fetch`与`git pull`区别
+git fetch 相当于是从远程获取最新到本地，不会自动merge，如下指令：
 ```bash
-git fetch --all  
-git reset --hard origin/master 
-git pull
+git fetch orgin master //将远程仓库的master分支下载到本地当前branch中
+git log -p master  ..origin/master //比较本地的master分支和origin/master分支的差别
+git merge origin/master //进行合并
 ```
 
 
 ## 正常修改流程
 先pull仓库最新文件到本地（但不会覆盖本地已有文件），再修改文件，修改完之后`git add`当前文件添加到暂存区
-之后`git add .`将所有修改文件添加到暂存区，再使用`git commit -a -m "第二次修改"`添加注释信息并提交到本地仓库
-`git commit -a -m`命令没有在暂存区中的也能提交，因此引号中信息为全部修改总信息
-
-`git commit -m`只能把暂存区中的提交
+之后`git add .`将所有修改文件添加到暂存区，再使用`git commit -m "第二次修改"`添加注释信息并提交到本地仓库
 
 提交修改之后输入
 ```bash
