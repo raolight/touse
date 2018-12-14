@@ -79,67 +79,67 @@ git push origin [name]
 ```
 
 #### 将本地分支与远程分支关联之后才能直接执行git push推送
-```bash
-git push origin [name] -u
-#此代码是将当前branch push到origin的branch,-u表示同时建立关联，以后再推送到远程只需git push
 ```
+git push origin [name] -u
+```
+此代码是将当前branch push到origin的branch,-u表示同时建立关联，以后再推送到远程只需git push
 
 
 
 #### 推送分支
-```bash
+```
 git push origin [name]
 ```
 
 #### 删除分支
-```js
-git branch -d [name] 
-//-d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
 ```
+git branch -d [name] 
+```
+`-d`选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用`-D`选项
 
 
 #### 删除远程分支
-```bash
+```
 git push origin -d [name]
 ```
 
 
 
 #### 查询当前远程的版本
-```bash
+```
 git remote -v
 ```
 
 
 #### 从远程拉取代码到本地
-```bash
+```
 git pull [remoteName] [localBranchName]
 ```
 
 
 #### 查看暂存区和工作目录的状态
-```bash
+```
 git status
 ```
 
 #### 查看本地仓库文件
-```bash
+```
 git ls-files
 ```
 
 #### 合并某分支到当前分支
-```bash
+```
 git merge [name]
 ```
 
 
-##### 撤销合并恢复到以前状态。
-```bash
+##### 撤销合并恢复到以前状态
+```
 git reset --hard HEAD
 ```
 
 ##### 撤销已经提交的
-```bash
+```
 git reset --hard ORIG_HEAD
 ```
 
@@ -147,20 +147,20 @@ git reset --hard ORIG_HEAD
 
 ## 多人开发
 #### 开发分支（dev）上的代码达到上线的标准后，要合并到 master 分支
-```js
-git checkout dev //切换到dev分支
-git pull //拉取最新版本
-git checkout master //切换到master分支
-git merge dev //将dev分支合并到当前分支(当前为master)
-git push -u origin master //推送当前分支(当前为master)到远程master分支
+```bash
+git checkout dev #切换到dev分支
+git pull #拉取最新版本
+git checkout master #切换到master分支
+git merge dev #将dev分支合并到当前分支(当前为master)
+git push -u origin master #推送当前分支(当前为master)到远程master分支
 ```
 #### 当master代码改动了，需要更新到分支（dev）上
-```js
-git checkout master //切换到master分支
-git pull //拉取最新版本
-git checkout dev //切换到dev分支
-git merge master //将master分支合并到当前分支(当前为dev)
-git push -u origin dev //推送当前分支(当前为dev)到远程dev分支
+```bash
+git checkout master #切换到master分支
+git pull #拉取最新版本
+git checkout dev #切换到dev分支
+git merge master #将master分支合并到当前分支(当前为dev)
+git push -u origin dev #推送当前分支(当前为dev)到远程dev分支
 ```
 
 
@@ -169,7 +169,7 @@ git push -u origin dev //推送当前分支(当前为dev)到远程dev分支
 
 ## Git提交记住用户名和密码
 #### 永久记住密码
-```bash
+```
 git config --global credential.helper store
 ```
 会在`C:\Users\用户名`目录的.gitconfig文件中生成下面的配置。
@@ -181,7 +181,7 @@ git config --global credential.helper store
 
 #### 临时记住密码
 默认记住15分钟：
-```bash
+```
 git config –global credential.helper cache
 ```
 下面是自定义配置记住1小时：
@@ -195,10 +195,10 @@ git config credential.helper 'cache –timeout=3600'
 
 #### 撤销做出的修改
 git如何删除本地所有未提交的更改，包括修改的、新增的、删除的，还有一些编译生成的临时文件。就是回到上一版本的干净状态。查了下有两个相关的命令：
-```bash
+```
 git clean -df
 ```
-```bash
+```
 git reset --hard
 ```
 有些需要注意的问题是第一个命令只删除所有untracked的文件，如果文件已经被tracked, 修改过的文件不会被回退。而第二个命令只把tracked的文件revert到前一个版本，对于untracked的文件(比如编译的临时文件)都不会被删除。如果需要一步到位的话可以尝试把两个命令配合起来使用。`git reset --hard` 之后再 `git clean -xdf`
@@ -231,21 +231,21 @@ Windows下使用`git add`时警告：warning：LF will be replaced by CRLF in ×
 
 #### 解决方法：
 1、如果版本库/项目还没被创建，执行以下操作：
-```js
-git config --global core.autocrlf false //在全局禁用自动转换
+```bash
+git config --global core.autocrlf false #在全局禁用自动转换
 ```
 2、如果版本库/项目已经创建，使用非全局禁用自动转换
-```js
-git config core.autocrlf false //在当前版本库中禁用自动转换
+```bash
+git config core.autocrlf false #在当前版本库中禁用自动转换
 ```
 3、如果版本库/项目已经创建，在全局禁用自动转换则需要先删除之前创建的.git 文件后添加上面的设置。 
 此操作很坑！是删除整个.git，会把跟远程的链接都断掉，整个git的提交历史/版本库都会被删除！
-```js
+```bash
 rm -rf .git
-git config --global core.autocrlf false //在全局禁用自动转换
+git config --global core.autocrlf false #在全局禁用自动转换
 ```
 完成后再重新执行git创建版本库操作：
-```js
+```bash
 git init
 git add ...
 git remote add ***
@@ -255,7 +255,6 @@ git remote add ***
 
 
 ## 删除文件
-```js
-rm -rf .git
-//删除.git文件夹
+```bash
+rm -rf .git #删除.git文件夹
 ```
