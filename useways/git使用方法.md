@@ -12,7 +12,6 @@ git config --global user.email "youremail@xxx.com"
 
 
 ## 现有文件加入git仓库
-
 右键Git Bash进入到项目文件夹
 
 输入`git init`(使当前文件夹加入git管理）
@@ -28,70 +27,143 @@ git config --global user.email "youremail@xxx.com"
 
 
 ## 从git上下载项目
-命令行进入到需要下载项目文件夹的位置
-输入`git clone https://github.com/xxxxxx/xxxxxx.git`
-(输入自己的项目地址，clone完之后cd进入到项目文件夹)
-
-之后修改完文件之后可以先`git status`查看一下修改的文件，红色字modified为未添加到暂存区的
-
-
-## `git fetch`与`git pull`区别
-git fetch 相当于是从远程获取最新到本地，不会自动merge，如下指令：
+命令行进入到需要下载项目文件夹的位置，输入
 ```bash
-git fetch orgin master //将远程仓库的master分支下载到本地当前branch中
-git log -p master  ..origin/master //比较本地的master分支和origin/master分支的差别
-git merge origin/master //进行合并
+git clone https://github.com/xxxxxx/xxxxxx.git
 ```
+clone完之后cd进入到项目文件夹即可执行git操作
+
 
 
 ## 正常修改流程
-先pull仓库最新文件到本地（但不会覆盖本地已有文件），再修改文件，修改完之后`git add`当前文件添加到暂存区
-之后`git add .`将所有修改文件添加到暂存区，再使用`git commit -m "第二次修改"`添加注释信息并提交到本地仓库
+先pull仓库最新文件到本地（但不会覆盖本地已有文件），再修改文件，修改完文件之后可以先`git status`查看一下修改的文件，红色字modified为未添加到暂存区的文件，之后`git add`当前文件添加到暂存区
+之后`git add .`将所有修改文件添加到暂存区，再使用`git commit -m "第二次修改"`添加注释信息并提交到本地仓库,最后再push提交。
 
-提交修改之后输入
+
+## git fetch与git pull区别
+git fetch 相当于是从远程获取最新到本地，不会自动merge.  
+git pull：相当于是从远程获取最新版本并merge到本地.
+
+
+
+
+## git命令常用操作
+#### 查看历史记录
 ```bash
-git push -u origin master
+git log
 ```
-上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了
+
+#### 查看分支
+查看本地分支：
+```bash
+git branch
+``` 
+查看远程分支：
+```bash
+git branch -r
+```
+
+#### 创建分支
+```bash
+git branch [name]
+```
+
+#### 切换分支
+```bash
+git checkout [name]
+```
+
+#### 推送创建的分支
+```bash
+git push origin [name]
+```
+
+#### 将本地分支与远程分支关联之后才能直接执行git push推送
+```js
+git push origin [name] -u
+//此代码是将当前branch push到origin的branch,-u表示同时建立关联，以后再推送到远程只需git push
+```
 
 
 
-## 从远程仓库获取最新代码合并到本地分支
-#### 不额外建立本地分支
-查询当前远程的版本
+#### 推送分支
+```bash
+git push origin [name]
+```
+
+#### 删除分支
+```js
+git branch -d [name] 
+//-d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
+```
+
+
+#### 删除远程分支
+```bash
+git push origin -d [name]
+```
+
+
+
+#### 查询当前远程的版本
 ```bash
 git remote -v
 ```
 
-##### 获取最新代码到本地(本地当前分支为[branch]，获取的远端的分支为[origin/branch])
-示例1：获取远端的origin/master分支
+
+#### 从远程拉取代码到本地
 ```bash
-git fetch origin master
-```
-示例2：获取远端的origin/dev分支
-```bash
-git fetch origin dev
+git pull [remoteName] [localBranchName]
 ```
 
-##### 查看版本差异
-示例1：查看本地master与远端origin/master的版本差异
+
+#### 查看暂存区和工作目录的状态
 ```bash
-git log -p master..origin/master
-```
-示例2：查看本地dev与远端origin/dev的版本差异
-```bash
-git log -p dev..origin/dev
+git status
 ```
 
-##### 合并最新代码到本地分支
-示例1：合并远端分支origin/master到当前分支
+#### 查看本地仓库文件
 ```bash
-git merge origin/master
+git ls-files
 ```
-示例2：合并远端分支origin/dev到当前分支
+
+#### 合并某分支到当前分支
 ```bash
-git merge origin/dev
+git merge [name]
 ```
+
+
+##### 撤销合并恢复到以前状态。
+```bash
+git reset --hard HEAD
+```
+
+##### 撤销已经提交的
+```bash
+git reset --hard ORIG_HEAD
+```
+
+
+
+## 多人开发
+#### 开发分支（dev）上的代码达到上线的标准后，要合并到 master 分支
+```js
+git checkout dev //切换到dev分支
+git pull //拉取最新版本
+git checkout master //切换到master分支
+git merge dev //将dev分支合并到当前分支(当前为master)
+git push -u origin master //推送当前分支(当前为master)到远程master分支
+```
+#### 当master代码改动了，需要更新到分支（dev）上
+```js
+git checkout master //切换到master分支
+git pull //拉取最新版本
+git checkout dev //切换到dev分支
+git merge master //将master分支合并到当前分支(当前为dev)
+git push -u origin dev //推送当前分支(当前为dev)到远程dev分支
+```
+
+
 
 
 
@@ -119,95 +191,7 @@ git config credential.helper 'cache –timeout=3600'
 
 
 
-## git命令常用操作
 
-#### 查看历史记录
-```bash
-git log
-```
-
-#### 创建分支
-```bash
-git branch [name]
-```
-
-#### 切换分支
-```bash
-git checkout [name]
-```
-
-#### 推送创建的分支
-```bash
-git push origin [name]
-```
-
-#### 将本地分支与远程分支关联之后才能直接执行git push推送
-```bash
-git push origin [name] -u
-```
-此代码是将当前branch push到origin的branch `-u`表示同时建立关联，以后再推送到远程只需`git push`
-
-#### 查看分支
-本地：
-```bash
-git branch
-``` 
-远程：
-```bash
-git branch -r
-```
-
-#### 从远程克隆一个仓库
-```bash
-git clone [仓库地址]
-```
-
-#### 从远程拉取代码到本地
-```bash
-git pull [remoteName] [localBranchName]
-```
-
-
-#### 添加文件到暂存区
-###### 单独文件
-`git add`完整文件名
-
-###### 所有修改文件
-```bash
-git add .
-```
-
-
-#### 推送分支
-```bash
-git push origin [name]
-```
-
-#### 删除分支
-```bash
-git branch -d [name]
-```
-`-d`选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用`-D`选项
-
-#### 删除远程分支
-```bash
-git push origin -d [name]
-```
-
-#### 查看暂存区和工作目录的状态
-```bash
-git status
-```
-
-#### 查看本地仓库文件
-```bash
-git ls-files
-```
-
-#### 合并某分支到当前分支
-```bash
-git merge [name]
-```
 
 #### 撤销做出的修改
 git如何删除本地所有未提交的更改，包括修改的、新增的、删除的，还有一些编译生成的临时文件。就是回到上一版本的干净状态。查了下有两个相关的命令：
@@ -235,11 +219,6 @@ git reset --hard
 
 
 
-## 删除文件
-```bash
-rm -rf .git
-```
-(删除.git文件夹)
 
 
 ## 常见错误
@@ -250,78 +229,33 @@ Windows下使用`git add`时警告：warning：LF will be replaced by CRLF in ×
 解决的办法很简单，禁止git的自动转换即可。
 
 
-解决方法：
+#### 解决方法：
 1、如果版本库/项目还没被创建，执行以下操作：
-git config --global core.autocrlf false     //在全局禁用自动转换
+```js
+git config --global core.autocrlf false //在全局禁用自动转换
+```
 2、如果版本库/项目已经创建，使用非全局禁用自动转换
-git config core.autocrlf false                    //在当前版本库中禁用自动转换
+```js
+git config core.autocrlf false //在当前版本库中禁用自动转换
+```
 3、如果版本库/项目已经创建，在全局禁用自动转换则需要先删除之前创建的.git 文件后添加上面的设置。 
 此操作很坑！是删除整个.git，会把跟远程的链接都断掉，整个git的提交历史/版本库都会被删除！
+```js
 rm -rf .git
-git config --global core.autocrlf false     //在全局禁用自动转换
+git config --global core.autocrlf false //在全局禁用自动转换
+```
 完成后再重新执行git创建版本库操作：
+```js
 git init
 git add ...
 git remote add ***
+```
 这样设置git的配置后在执行add操作就没有问题了。
 
 
 
-#### 多人开发时的分支与合并
-几个人合作用开发项目时，代码保存到GitHub上，我们不可能在原有代码上直接修改调试，这时就要创建一个新的分支，在分支上改自己的代码，修改完成后，把分支上修改的代码合并到主分支master上就好了。这个过程需要经过以下几个步骤：
-
-###### 1、创建一个分支temp
-```bash
-git branch temp
-```
-
-###### 2、查看分支创建是否成功，下面的命令可以得到现在仓库中的分支列表
-```bash
-git branch
-```
-
-###### 3、master分支是仓库默认的主分支，把工作从master分支下切换到temp分支下
-```bash
-git checkout temp
-```
-
-###### 4、内容修改完成后，通过下面命令把内容提交给temp分支下
-```bash
-git add -a
-```
-git push -u origin temp
-
-###### 5、再把工作从temp分支下切换到master下
-```bash
-git checkout master
-```
-
-###### 6、因为是合作开发项目，这时远程仓库中的内容有可能已经发生了变化，所以我们需要将远程仓库中的内容和本地分支中的内容进行合并
-```bash
-git pull origin master
-```
-
-###### 7、接下来要做的是将temp分支合并到master上
-```bash
-git merge temp
-```
-
-###### 8、查看分支中内容提交的状态
-```bash
-git status
-```
-
-###### 9、最后一步，我们把修改的内容提交到主分支上
-```bash
-git push origin master
-```
-
-###### 如果你感觉合并后的内容有问题，你可以通过撤销合并恢复到以前状态。
-```bash
-git reset --hard HEAD
-```
-
-###### 代码已经提交，撤销的方法是
-```bash
-git reset --hard ORIG_HEAD
+## 删除文件
+```js
+rm -rf .git
+//删除.git文件夹
 ```
