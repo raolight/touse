@@ -1,4 +1,4 @@
-##PHP IntelliSense扩展
+## PHP IntelliSense扩展
 ### 需要安装PHP7.0以上版本并且配置路径
 ```bash
 PHP executable not found. Install PHP 7 and add it to your PATH or set the php.executablePath setting
