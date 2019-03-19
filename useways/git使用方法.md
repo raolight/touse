@@ -117,6 +117,21 @@ git pull [remoteName] [localBranchName]
 ```
 
 
+#### 撤销git pull合并返回任意commit
+运行`git reflog`命令查看你的历史变更记录
+```
+$ git reflog
+e52e52e (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: pull: Merge made by the 'recursive' strategy.
+5738b64 HEAD@{1}: commit: 初始版本
+fe91322 HEAD@{2}: clone: from https://raolight@bitbucket.org/jiudu/dns_mobile.git
+```
+返回初始版本
+```
+git reset --hard 5738b64
+```
+
+
+
 #### 查看暂存区和工作目录的状态
 ```
 git status
