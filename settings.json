@@ -1,0 +1,40 @@
+{
+    "editor.wordWrap": "on",
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "*.wpy": "html"
+    },
+    "emmet.includeLanguages": {
+        "wxml": "html",
+        "vue-html": "html",
+        "vue": "html"
+    },
+    "minapp-vscode.disableAutoConfig": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[wxml]": {
+        "editor.defaultFormatter": "qiu8310.minapp-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[less]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "material-icon-theme",
+    "vetur.format.options.tabSize": 4,
+    "[scss]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    }
+}
