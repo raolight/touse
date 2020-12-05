@@ -68,6 +68,11 @@ git branch -r
 git branch [name]
 ```
 
+#### 将现有的未提交更改移动到新分支
+```bash
+git checkout -b [new-branch]
+```
+
 #### 切换分支
 ```bash
 git checkout [name]
