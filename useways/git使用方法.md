@@ -68,11 +68,6 @@ git branch -r
 git branch [name]
 ```
 
-#### 将现有的未提交更改移动到新分支
-```bash
-git checkout -b [new-branch]
-```
-
 #### 切换分支
 ```bash
 git checkout [name]
@@ -174,6 +169,7 @@ git checkout master #切换到master分支
 git merge dev #将dev分支合并到当前分支(当前为master)
 git push -u origin master #推送当前分支(当前为master)到远程master分支
 ```
+
 #### 当master代码改动了，需要更新到分支（dev）上
 ```bash
 git checkout master #切换到master分支
@@ -183,9 +179,17 @@ git merge master #将master分支合并到当前分支(当前为dev)
 git push -u origin dev #推送当前分支(当前为dev)到远程dev分支
 ```
 
+#### 强制提交本地分支覆盖远程分支（慎用）
+```
+git push origin branchname --force
+```
 
-
-
+#### 强制拉取远程覆盖本地分支（慎用）
+```bash
+git fetch --all
+git reset --hard origin/master
+git pull
+```
 
 ## Git提交记住用户名和密码
 #### 永久记住密码
