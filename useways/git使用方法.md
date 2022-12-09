@@ -98,6 +98,16 @@ git branch -d [name]
 `-d`选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用`-D`选项
 
 
+#### 删除某条commit
+
+`git log`查找要删除的前一次提交的 `commit_id` ，将 `commit_id` 替换成复制的值
+
+```
+`git rebase -i commit_id`
+```
+进入 Vim 编辑模式后，按`i`进入编辑模式，将要删除的 commit 前面的 `pick` 改成 `drop`，编辑完成后点击Esc后，再输入`:wq`保存退出
+
+
 #### 删除远程分支
 ```
 git push origin -d [name]
